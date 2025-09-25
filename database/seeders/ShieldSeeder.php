@@ -25,6 +25,17 @@ class ShieldSeeder extends Seeder
                 'delete_any:role',
                 'restore_any:role',
                 'force_delete_any:role',
+
+                'view_any:media_directory',
+                'view:media_directory',
+                'create:media_directory',
+                'update:media_directory',
+                'delete:media_directory',
+                'restore:media_directory',
+                'force_delete:media_directory',
+                'delete_any:media_directory',
+                'restore_any:media_directory',
+                'force_delete_any:media_directory',
             ],
         ];
 
