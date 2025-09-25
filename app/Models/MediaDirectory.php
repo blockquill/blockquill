@@ -65,4 +65,14 @@ class MediaDirectory extends Model
     {
         return $this->hasMany(MediaDirectory::class, 'parent_id');
     }
+
+    /**
+     * Get the media items in this directory.
+     * 
+     * @return HasMany<Media, $this>
+     */
+    public function media(): HasMany
+    {
+        return $this->hasMany(Media::class, 'media_directory_id');
+    }
 }

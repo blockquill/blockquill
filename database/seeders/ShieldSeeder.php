@@ -36,6 +36,17 @@ class ShieldSeeder extends Seeder
                 'delete_any:media_directory',
                 'restore_any:media_directory',
                 'force_delete_any:media_directory',
+
+                'view_any:media',
+                'view:media',
+                'create:media',
+                'update:media',
+                'delete:media',
+                'restore:media',
+                'force_delete:media',
+                'delete_any:media',
+                'restore_any:media',
+                'force_delete_any:media',
             ],
         ];
 
