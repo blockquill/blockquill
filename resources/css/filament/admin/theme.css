@@ -1,0 +1,16 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+.fi-sidebar {
+    border-right: 1px solid #e5e7eb;
+}
+
+.dark .fi-sidebar {
+    border-right-color: #374151;
+}
+
+.fi-main {
+    max-width: 100%;
+}
