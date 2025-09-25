@@ -8,14 +8,14 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum PostType: string implements EnumUtilitiesContract, HasLabel, HasIcon, HasColor
+enum PostType: string implements EnumUtilitiesContract, HasColor, HasIcon, HasLabel
 {
     use EnumUtilitiesTrait;
 
     case ARTICLE = 'article';
     case PAGE = 'page';
 
-    public function getLabel(): string|null
+    public function getLabel(): string
     {
         return match ($this) {
             self::ARTICLE => 'Article',
@@ -23,7 +23,7 @@ enum PostType: string implements EnumUtilitiesContract, HasLabel, HasIcon, HasCo
         };
     }
 
-    public function getIcon(): ?string
+    public function getIcon(): string
     {
         return match ($this) {
             self::ARTICLE => 'heroicon-o-document-text',
@@ -31,7 +31,7 @@ enum PostType: string implements EnumUtilitiesContract, HasLabel, HasIcon, HasCo
         };
     }
 
-    public function getColor(): ?string
+    public function getColor(): string
     {
         return match ($this) {
             self::ARTICLE => 'primary',

@@ -9,15 +9,15 @@ use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 use Illuminate\Contracts\Support\Htmlable;
 
-enum PostStatus: string implements EnumUtilitiesContract, HasLabel, HasIcon, HasColor
+enum PostStatus: string implements EnumUtilitiesContract, HasColor, HasIcon, HasLabel
 {
     use EnumUtilitiesTrait;
-    
+
     case DRAFT = 'draft';
     case PUBLISHED = 'published';
     case SCHEDULED = 'scheduled';
 
-    public function getLabel(): string|Htmlable|null
+    public function getLabel(): string
     {
         return match ($this) {
             self::DRAFT => 'Draft',
@@ -26,7 +26,7 @@ enum PostStatus: string implements EnumUtilitiesContract, HasLabel, HasIcon, Has
         };
     }
 
-    public function getIcon(): ?string
+    public function getIcon(): string
     {
         return match ($this) {
             self::DRAFT => 'heroicon-o-pencil',
@@ -35,7 +35,7 @@ enum PostStatus: string implements EnumUtilitiesContract, HasLabel, HasIcon, Has
         };
     }
 
-    public function getColor(): ?string
+    public function getColor(): string
     {
         return match ($this) {
             self::DRAFT => 'gray',

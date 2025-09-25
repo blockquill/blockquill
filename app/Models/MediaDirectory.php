@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
- * 
  * @property-read MediaDirectory|null $parent
  * @property-read Collection<int, MediaDirectory> $children
  */
@@ -48,7 +47,7 @@ class MediaDirectory extends Model
 
     /**
      * Get the parent directory.
-     * 
+     *
      * @return BelongsTo<MediaDirectory, $this>
      */
     public function parent(): BelongsTo
@@ -58,7 +57,7 @@ class MediaDirectory extends Model
 
     /**
      * Get the child directories.
-     * 
+     *
      * @return HasMany<MediaDirectory, $this>
      */
     public function children(): HasMany
@@ -68,7 +67,7 @@ class MediaDirectory extends Model
 
     /**
      * Get the media items in this directory.
-     * 
+     *
      * @return HasMany<Media, $this>
      */
     public function media(): HasMany

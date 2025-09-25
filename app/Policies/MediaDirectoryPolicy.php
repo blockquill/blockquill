@@ -4,10 +4,12 @@ namespace App\Policies;
 
 use App\Models\MediaDirectory;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MediaDirectoryPolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Determine whether the user can view any models.
      */

@@ -19,7 +19,7 @@ class MediaFactory extends Factory
     public function definition(): array
     {
         return [
-            'filename' => $this->faker->word() . '.' . $this->faker->fileExtension(),
+            'filename' => $this->faker->word().'.'.$this->faker->fileExtension(),
             'slug' => $this->faker->unique()->slug(),
             'path' => $this->faker->filePath(),
             'mime_type' => $this->faker->mimeType(),

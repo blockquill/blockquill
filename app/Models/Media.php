@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/** 
+/**
  * @property int $id
  * @property string $filename
  * @property string $slug
@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
- * 
  * @property-read User $uploader
  * @property-read MediaDirectory|null $mediaDirectory
  */
@@ -36,7 +35,7 @@ class Media extends Model
 
     /**
      * The attributes that are mass assignable.
-     * 
+     *
      * @var list<string>
      */
     protected $fillable = [
@@ -55,7 +54,7 @@ class Media extends Model
 
     /**
      * The attributes that should be cast.
-     * 
+     *
      * @var array<string, string>
      */
     protected $casts = [
@@ -66,7 +65,7 @@ class Media extends Model
 
     /**
      * Get the user that uploaded the media.
-     * 
+     *
      * @return BelongsTo<User, $this>
      */
     public function uploader(): BelongsTo
@@ -76,7 +75,7 @@ class Media extends Model
 
     /**
      * Get the media directory that contains the media.
-     * 
+     *
      * @return BelongsTo<MediaDirectory, $this>
      */
     public function mediaDirectory(): BelongsTo

@@ -26,7 +26,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
- * 
  * @property-read User|null $author
  * @property-read Media|null $featuredImage
  */
@@ -37,7 +36,7 @@ class Post extends Model
 
     /**
      * The attributes that are mass assignable.
-     * 
+     *
      * @var list<string>
      */
     protected $fillable = [
@@ -55,7 +54,7 @@ class Post extends Model
 
     /**
      * The attributes that should be cast to native types.
-     * 
+     *
      * @var array<string, string>
      */
     protected $casts = [
@@ -69,7 +68,7 @@ class Post extends Model
 
     /**
      * Get the author that wrote the post.
-     * 
+     *
      * @return BelongsTo<User, $this>
      */
     public function author(): BelongsTo
@@ -79,7 +78,7 @@ class Post extends Model
 
     /**
      * Get the featured image associated with the post.
-     * 
+     *
      * @return BelongsTo<Media, $this>
      */
     public function featuredImage(): BelongsTo
