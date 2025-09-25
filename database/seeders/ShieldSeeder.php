@@ -26,6 +26,17 @@ class ShieldSeeder extends Seeder
                 'restore_any:role',
                 'force_delete_any:role',
 
+                'view_any:user',
+                'view:user',
+                'create:user',
+                'update:user',
+                'delete:user',
+                'restore:user',
+                'force_delete:user',
+                'delete_any:user',
+                'restore_any:user',
+                'force_delete_any:user',
+
                 'view_any:media_directory',
                 'view:media_directory',
                 'create:media_directory',
@@ -47,6 +58,17 @@ class ShieldSeeder extends Seeder
                 'delete_any:media',
                 'restore_any:media',
                 'force_delete_any:media',
+
+                'view_any:post',
+                'view:post',
+                'create:post',
+                'update:post',
+                'delete:post',
+                'restore:post',
+                'force_delete:post',
+                'delete_any:post',
+                'restore_any:post',
+                'force_delete_any:post',
             ],
         ];
 
