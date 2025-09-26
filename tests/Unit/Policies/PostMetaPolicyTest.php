@@ -81,4 +81,44 @@ describe('PostMetaPolicy', function () {
         $this->user->givePermissionTo($permission);
         expect($this->policy->forceDelete($this->user, $this->postMeta))->toBeTrue();
     });
+
+    test('forceDeleteAny', function () {
+        // User without permission
+        expect($this->policy->forceDeleteAny($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'force_delete_any:post_meta']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->forceDeleteAny($this->user))->toBeTrue();
+    });
+
+    test('restoreAny', function () {
+        // User without permission
+        expect($this->policy->restoreAny($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'restore_any:post_meta']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->restoreAny($this->user))->toBeTrue();
+    });
+
+    test('replicate', function () {
+        // User without permission
+        expect($this->policy->replicate($this->user, $this->postMeta))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'replicate:post_meta']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->replicate($this->user, $this->postMeta))->toBeTrue();
+    });
+
+    test('reorder', function () {
+        // User without permission
+        expect($this->policy->reorder($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'reorder:post_meta']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->reorder($this->user))->toBeTrue();
+    });
 });

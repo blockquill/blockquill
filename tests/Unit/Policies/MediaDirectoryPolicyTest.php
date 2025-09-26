@@ -81,4 +81,44 @@ describe('MediaDirectoryPolicy', function () {
         $this->user->givePermissionTo($permission);
         expect($this->policy->forceDelete($this->user, $this->mediaDirectory))->toBeTrue();
     });
+
+    test('forceDeleteAny', function () {
+        // User without permission
+        expect($this->policy->forceDeleteAny($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'force_delete_any:media_directory']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->forceDeleteAny($this->user))->toBeTrue();
+    });
+
+    test('restoreAny', function () {
+        // User without permission
+        expect($this->policy->restoreAny($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'restore_any:media_directory']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->restoreAny($this->user))->toBeTrue();
+    });
+
+    test('replicate', function () {
+        // User without permission
+        expect($this->policy->replicate($this->user, $this->mediaDirectory))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'replicate:media_directory']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->replicate($this->user, $this->mediaDirectory))->toBeTrue();
+    });
+
+    test('reorder', function () {
+        // User without permission
+        expect($this->policy->reorder($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'reorder:media_directory']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->reorder($this->user))->toBeTrue();
+    });
 });
