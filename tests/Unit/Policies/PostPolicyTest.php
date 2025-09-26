@@ -4,10 +4,9 @@ use App\Models\Post;
 use App\Models\User;
 use App\Policies\PostPolicy;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
-    $this->policy = new PostPolicy();
+    $this->policy = new PostPolicy;
     $this->user = User::factory()->create();
     $this->post = Post::factory()->create();
 });

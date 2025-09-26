@@ -4,10 +4,9 @@ use App\Models\MediaDirectory;
 use App\Models\User;
 use App\Policies\MediaDirectoryPolicy;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
-    $this->policy = new MediaDirectoryPolicy();
+    $this->policy = new MediaDirectoryPolicy;
     $this->user = User::factory()->create();
     $this->mediaDirectory = MediaDirectory::factory()->create();
 });

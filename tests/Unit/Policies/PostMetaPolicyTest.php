@@ -4,10 +4,9 @@ use App\Models\PostMeta;
 use App\Models\User;
 use App\Policies\PostMetaPolicy;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
-    $this->policy = new PostMetaPolicy();
+    $this->policy = new PostMetaPolicy;
     $this->user = User::factory()->create();
     $this->postMeta = PostMeta::factory()->create();
 });

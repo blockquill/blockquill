@@ -6,7 +6,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
-    $this->policy = new RolePolicy();
+    $this->policy = new RolePolicy;
     $this->user = User::factory()->create();
     $this->role = Role::create(['name' => 'test-role']);
 });

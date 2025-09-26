@@ -4,10 +4,9 @@ use App\Models\Setting;
 use App\Models\User;
 use App\Policies\SettingPolicy;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
-    $this->policy = new SettingPolicy();
+    $this->policy = new SettingPolicy;
     $this->user = User::factory()->create();
     $this->setting = Setting::factory()->create();
 });

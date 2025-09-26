@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Media;
-use App\Models\User;
 use App\Models\MediaDirectory;
+use App\Models\User;
 
 beforeEach(function () {
     $this->media = Media::factory()->create([
@@ -37,17 +37,17 @@ test('casts', function () {
 
 test('relations', function () {
     expect($this->media->uploader)->toBeInstanceOf(User::class);
-    
+
     $mediaWithDirectory = Media::factory()->create([
         'media_directory_id' => MediaDirectory::factory()->create()->id,
     ]);
-    
+
     expect($mediaWithDirectory->mediaDirectory)->toBeInstanceOf(MediaDirectory::class);
 });
 
 test('soft deletes', function () {
     $this->media->delete();
-    
+
     expect($this->media->fresh()->deleted_at)->not()->toBeNull()
         ->and(Media::count())->toBe(0)
         ->and(Media::withTrashed()->count())->toBe(1);

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\MediaDirectory;
 use App\Models\Media;
+use App\Models\MediaDirectory;
 
 beforeEach(function () {
     $this->mediaDirectory = MediaDirectory::factory()->create([
@@ -32,7 +32,7 @@ test('relations', function () {
 
 test('soft deletes', function () {
     $this->mediaDirectory->delete();
-    
+
     expect($this->mediaDirectory->fresh()->deleted_at)->not()->toBeNull()
         ->and(MediaDirectory::count())->toBe(0)
         ->and(MediaDirectory::withTrashed()->count())->toBe(1);
@@ -44,7 +44,7 @@ test('hierarchical structure', function () {
         'name' => 'Child',
         'parent_id' => $parent->id,
     ]);
-    
+
     expect($child->parent->name)->toBe('Parent')
         ->and($parent->children->first()->name)->toBe('Child');
 });

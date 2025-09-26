@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\PostMeta;
 use App\Models\Post;
+use App\Models\PostMeta;
 
 beforeEach(function () {
     $this->post = Post::factory()->create();
@@ -32,7 +32,7 @@ test('relations', function () {
 
 test('soft deletes', function () {
     $this->postMeta->delete();
-    
+
     expect($this->postMeta->fresh()->deleted_at)->not()->toBeNull()
         ->and(PostMeta::count())->toBe(0)
         ->and(PostMeta::withTrashed()->count())->toBe(1);
@@ -41,12 +41,12 @@ test('soft deletes', function () {
 test('value handling', function () {
     expect($this->postMeta->key)->toBe('custom_field')
         ->and($this->postMeta->value)->toBe('custom_value');
-        
+
     $nullMeta = PostMeta::factory()->create([
         'post_id' => $this->post->id,
         'key' => 'nullable_field',
         'value' => null,
     ]);
-    
+
     expect($nullMeta->value)->toBeNull();
 });

@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Taxonomy;
-use App\Models\Post;
 use App\Enums\TaxonomyType;
+use App\Models\Post;
+use App\Models\Taxonomy;
 
 beforeEach(function () {
     $this->taxonomy = Taxonomy::factory()->create([
@@ -39,14 +39,14 @@ test('relations', function () {
 
 test('hierarchical structure', function () {
     $child = Taxonomy::factory()->create(['parent_id' => $this->taxonomy->id]);
-    
+
     expect($child->parent->id)->toBe($this->taxonomy->id)
         ->and($this->taxonomy->children->first()->id)->toBe($child->id);
 });
 
 test('soft deletes', function () {
     $this->taxonomy->delete();
-    
+
     expect($this->taxonomy->fresh()->deleted_at)->not()->toBeNull()
         ->and(Taxonomy::count())->toBe(0)
         ->and(Taxonomy::withTrashed()->count())->toBe(1);

@@ -18,7 +18,7 @@ test('fillable attributes', function () {
 
 test('soft deletes', function () {
     $this->setting->delete();
-    
+
     expect($this->setting->fresh()->deleted_at)->not()->toBeNull()
         ->and(Setting::count())->toBe(0)
         ->and(Setting::withTrashed()->count())->toBe(1);

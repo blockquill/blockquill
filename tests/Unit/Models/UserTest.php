@@ -33,7 +33,7 @@ test('casts', function () {
 
 test('soft deletes', function () {
     $this->user->delete();
-    
+
     expect($this->user->fresh()->deleted_at)->not()->toBeNull()
         ->and(User::count())->toBe(0)
         ->and(User::withTrashed()->count())->toBe(1);
@@ -42,22 +42,23 @@ test('soft deletes', function () {
 test('roles functionality', function () {
     $role = Role::create(['name' => 'admin']);
     $this->user->assignRole($role);
-    
+
     expect($this->user->hasRole('admin'))->toBeTrue()
         ->and($this->user->roles)->toHaveCount(1);
 });
 
 test('filament panel access', function () {
-    $panel = new class extends \Filament\Panel {
+    $panel = new class extends \Filament\Panel
+    {
         public function __construct() {}
     };
-    
+
     expect($this->user->canAccessPanel($panel))->toBeTrue();
 });
 
 test('password hashing', function () {
     $user = User::factory()->create(['password' => 'plain-password']);
-    
+
     expect($user->password)->not()->toBe('plain-password')
         ->and(strlen($user->password))->toBeGreaterThan(50);
 });

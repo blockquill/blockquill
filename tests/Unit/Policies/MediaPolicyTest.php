@@ -4,10 +4,9 @@ use App\Models\Media;
 use App\Models\User;
 use App\Policies\MediaPolicy;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
-    $this->policy = new MediaPolicy();
+    $this->policy = new MediaPolicy;
     $this->user = User::factory()->create();
     $this->media = Media::factory()->create();
 });

@@ -4,10 +4,9 @@ use App\Models\Taxonomy;
 use App\Models\User;
 use App\Policies\TaxonomyPolicy;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
-    $this->policy = new TaxonomyPolicy();
+    $this->policy = new TaxonomyPolicy;
     $this->user = User::factory()->create();
     $this->taxonomy = Taxonomy::factory()->create();
 });
