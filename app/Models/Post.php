@@ -4,11 +4,14 @@ namespace App\Models;
 
 use App\Enums\PostStatus;
 use App\Enums\PostType;
+use App\Enums\TaxonomyType;
 use Carbon\Carbon;
 use Database\Factories\PostFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -28,6 +31,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $deleted_at
  * @property-read User|null $author
  * @property-read Media|null $featuredImage
+ * @property-read Collection<int, Taxonomy> $taxonomies
+ * @property-read Collection<int, Taxonomy> $categories
+ * @property-read Collection<int, Taxonomy> $tags
  */
 class Post extends Model
 {
@@ -84,5 +90,35 @@ class Post extends Model
     public function featuredImage(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'featured_image_id');
+    }
+
+    /**
+     * The taxonomies that belong to the post.
+     *
+     * @return BelongsToMany<Taxonomy, $this>
+     */
+    public function taxonomies(): BelongsToMany
+    {
+        return $this->belongsToMany(Taxonomy::class, 'post_taxonomy', 'post_id', 'taxonomy_id');
+    }
+
+    /**
+     * The categories that belong to the post.
+     *
+     * @return BelongsToMany<Taxonomy, $this>
+     */
+    public function categories(): BelongsToMany
+    {
+        return $this->taxonomies()->where('type', TaxonomyType::CATEGORY);
+    }
+
+    /**
+     * The tags that belong to the post.
+     *
+     * @return BelongsToMany<Taxonomy, $this>
+     */
+    public function tags(): BelongsToMany
+    {
+        return $this->taxonomies()->where('type', TaxonomyType::TAG);
     }
 }
