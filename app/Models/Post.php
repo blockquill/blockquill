@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -34,6 +35,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read Collection<int, Taxonomy> $taxonomies
  * @property-read Collection<int, Taxonomy> $categories
  * @property-read Collection<int, Taxonomy> $tags
+ * @property-read Collection<int, PostMeta> $metas
  */
 class Post extends Model
 {
@@ -120,5 +122,15 @@ class Post extends Model
     public function tags(): BelongsToMany
     {
         return $this->taxonomies()->where('type', TaxonomyType::TAG);
+    }
+
+    /**
+     * Get all of the post's metas.
+     *
+     * @return HasMany<PostMeta, $this>
+     */
+    public function metas(): HasMany
+    {
+        return $this->hasMany(PostMeta::class, 'post_id');
     }
 }
