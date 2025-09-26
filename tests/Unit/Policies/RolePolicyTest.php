@@ -81,4 +81,44 @@ describe('RolePolicy', function () {
         $this->user->givePermissionTo($permission);
         expect($this->policy->forceDelete($this->user, $this->role))->toBeTrue();
     });
+
+    test('forceDeleteAny', function () {
+        // User without permission
+        expect($this->policy->forceDeleteAny($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'force_delete_any:role']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->forceDeleteAny($this->user))->toBeTrue();
+    });
+
+    test('restoreAny', function () {
+        // User without permission
+        expect($this->policy->restoreAny($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'restore_any:role']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->restoreAny($this->user))->toBeTrue();
+    });
+
+    test('replicate', function () {
+        // User without permission
+        expect($this->policy->replicate($this->user, $this->role))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'replicate:role']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->replicate($this->user, $this->role))->toBeTrue();
+    });
+
+    test('reorder', function () {
+        // User without permission
+        expect($this->policy->reorder($this->user))->toBeFalse();
+
+        // User with permission
+        $permission = Permission::create(['name' => 'reorder:role']);
+        $this->user->givePermissionTo($permission);
+        expect($this->policy->reorder($this->user))->toBeTrue();
+    });
 });
