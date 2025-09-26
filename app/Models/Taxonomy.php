@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
- * 
  * @property-read Taxonomy|null $parent
  * @property-read Collection<int, Taxonomy> $children
  * @property-read Collection<int, Post> $posts
@@ -40,13 +39,13 @@ class Taxonomy extends Model
     ];
 
     protected $casts = [
-        'type' =>  TaxonomyType::class,
+        'type' => TaxonomyType::class,
         'parent_id' => 'integer',
     ];
 
     /**
      * Get the parent taxonomy.
-     * 
+     *
      * @return BelongsTo<Taxonomy, $this>
      */
     public function parent(): BelongsTo
@@ -56,7 +55,7 @@ class Taxonomy extends Model
 
     /**
      * Get the child taxonomies.
-     * 
+     *
      * @return HasMany<Taxonomy, $this>
      */
     public function children(): HasMany

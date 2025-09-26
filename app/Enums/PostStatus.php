@@ -7,7 +7,6 @@ use App\Traits\EnumUtilitiesTrait;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
-use Illuminate\Contracts\Support\Htmlable;
 
 enum PostStatus: string implements EnumUtilitiesContract, HasColor, HasIcon, HasLabel
 {

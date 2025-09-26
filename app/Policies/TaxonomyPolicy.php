@@ -5,12 +5,11 @@ namespace App\Policies;
 use App\Models\Taxonomy;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\Access\Response;
 
 class TaxonomyPolicy
 {
     use HandlesAuthorization;
-    
+
     /**
      * Determine whether the user can view any models.
      */

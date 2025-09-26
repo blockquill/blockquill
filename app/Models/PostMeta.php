@@ -26,7 +26,7 @@ class PostMeta extends Model
 
     /**
      * The attributes that are mass assignable.
-     * 
+     *
      * @var list<string>
      */
     protected $fillable = [
@@ -37,7 +37,7 @@ class PostMeta extends Model
 
     /**
      * The attributes that should be cast.
-     * 
+     *
      * @var array<string, string>
      */
     protected $casts = [
@@ -46,7 +46,7 @@ class PostMeta extends Model
 
     /**
      * Get the post that owns the meta.
-     * 
+     *
      * @return BelongsTo<Post, $this>
      */
     public function post(): BelongsTo

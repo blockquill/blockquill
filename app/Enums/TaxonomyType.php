@@ -8,7 +8,7 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum TaxonomyType: string implements EnumUtilitiesContract, HasLabel, HasColor, HasIcon
+enum TaxonomyType: string implements EnumUtilitiesContract, HasColor, HasIcon, HasLabel
 {
     use EnumUtilitiesTrait;
 
