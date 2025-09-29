@@ -5,9 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Database\Factories\PostMetaFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -19,10 +17,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $deleted_at
  * @property-read Post $post
  */
-class PostMeta extends Model
+class PostMeta extends BaseModel
 {
     /** @use HasFactory<PostMetaFactory> */
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
