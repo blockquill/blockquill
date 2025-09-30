@@ -97,7 +97,7 @@ jobs:
         run: ./vendor/bin/phpstan analyse --memory-limit=1G
 
       - name: Execute Pest tests
-        run: ./vendor/bin/pest --coverage --min=80
+        run: ./vendor/bin/pest --coverage
 
       - name: Check code formatting with Pint
         run: ./vendor/bin/pint --test

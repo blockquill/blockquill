@@ -5,9 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Database\Factories\MediaFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -28,10 +26,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read User $uploader
  * @property-read MediaDirectory|null $mediaDirectory
  */
-class Media extends Model
+class Media extends BaseModel
 {
     /** @use HasFactory<MediaFactory> */
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
