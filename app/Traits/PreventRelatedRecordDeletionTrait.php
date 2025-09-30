@@ -20,12 +20,12 @@ trait PreventRelatedRecordDeletionTrait
              * @throws \ReflectionException
              **/
             function ($model) {
-                $reflection = new ReflectionClass($model); //@phpstan-ignore-line
+                $reflection = new ReflectionClass($model); // @phpstan-ignore-line
                 $methods = $reflection->getMethods(ReflectionMethod::IS_PUBLIC);
 
                 foreach ($methods as $method) {
                     // Skip the roles method in the User model
-                    if (get_class($model) == User::class && $method->name == 'roles') { //@phpstan-ignore-line
+                    if (get_class($model) == User::class && $method->name == 'roles') { // @phpstan-ignore-line
                         continue;
                     }
                     // Skip static methods and the ones that don't have return type hints
@@ -45,7 +45,7 @@ trait PreventRelatedRecordDeletionTrait
                         $typeName = $returnType->getName();
 
                         if (in_array($typeName, [HasMany::class, HasOne::class, BelongsToMany::class])) {
-                            if ($model->{$method->name}()->exists()) { //@phpstan-ignore-line
+                            if ($model->{$method->name}()->exists()) { // @phpstan-ignore-line
 
                                 $modalName = Str::headline($method->name);
                                 throw DeleteActionFailedException::relatedRecordDeleteActionFailed("Cannot delete this record because it has related records in the $modalName");

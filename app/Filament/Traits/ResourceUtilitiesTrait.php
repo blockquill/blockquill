@@ -6,6 +6,6 @@ trait ResourceUtilitiesTrait
 {
     protected function getRedirectUrl(): string
     {
-        return $this->getResource()::getUrl('index'); //@phpstan-ignore-line
+        return $this->getResource()::getUrl('index'); // @phpstan-ignore-line
     }
 }
